@@ -1,0 +1,19 @@
+<h5 class="text-end">Welcome, <span class="text-success">{{userObj?.username}}</span>
+    <img src={{userObj.profileImage}} width="50px" alt="">
+</h5>
+<h6 class="text-end text-info">{{userObj?.email}}</h6>
+
+
+<!-- link for user activities -->
+<ul class="nav justify-content-around">
+    <li class="nav-item">
+        <a class="nav-link " routerLink="addtask">Add task</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="viewtasks">View tasks</a>
+    </li>
+</ul>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

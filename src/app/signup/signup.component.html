@@ -1,0 +1,102 @@
+<p class="display-1 text-center text-success">Register here</p>
+<div class="row">
+
+
+    <div class="col-12 col-sm-8 col-md-6 mx-auto">
+        <form [formGroup]="userSignupForm" #ref="ngForm" class=" mt-5 bg-light p-3"
+            (ngSubmit)="ref.valid &&onFormSubmit(template)">
+
+
+            <!-- name -->
+            <div class="mb-3 form-floating">
+
+                <input type="text" formControlName="username" id="username" class="form-control" placeholder="username">
+                <label for="username">Username</label>
+                <!-- user registration error messages -->
+                <p class="fw-bold text-center text-danger" *ngIf="registrationError.error">
+                    {{registrationError.errorMessage}}
+                </p>
+                <!-- username validation error msgs -->
+                <div class="text-danger" *ngIf="username.invalid&&(username.dirty) ||username.touched ||ref.submitted">
+                    <!-- error for reqired vialation -->
+                    <p *ngIf="username.errors?.['required']"> Username is required</p>
+
+                </div>
+
+
+
+            </div>
+            <!-- username -->
+            <div class="mb-3 form-floating">
+                <input type="password" formControlName="password" id="pw" class="form-control" placeholder="password">
+                <label for="pw">Password</label>
+                <!-- password validation error msgs -->
+                <div class="text-danger" *ngIf="password.invalid&&(password.dirty) ||password.touched ||ref.submitted">
+                    <!-- error for reqired vialation -->
+                    <p *ngIf="password.errors?.['required']"> Password is required</p>
+
+                </div>
+
+
+            </div>
+            <!-- password -->
+            <div class="mb-3 form-floating">
+
+                <input type="email" formControlName="email" id="email" class="form-control" placeholder="email">
+                <label for="email">Email</label>
+                <!-- email validation error msgs -->
+                <div class="text-danger" *ngIf="email.invalid&&(email.dirty) ||email.touched ||ref.submitted">
+                    <!-- error for reqired vialation -->
+                    <p *ngIf="email.errors?.['required']"> Email is required</p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- date of birth -->
+            <div class="mb-3 form-floating">
+
+                <input type="text" formControlName="city" id="city" class="form-control" placeholder="city">
+                <label for="city">City</label>
+                <!-- city validation error msgs -->
+                <div class="text-danger" *ngIf="city.invalid&&(city.dirty) ||city.touched ||ref.submitted">
+                    <!-- error for reqired vialation -->
+                    <p *ngIf="city.errors?.['required']"> City is required</p>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- profile pic -->
+            <div class="mb-3 form-floating">
+                <input type="file" id="photo" class="form-control" name="photo" placeholder="photo"
+                    (input)="onFileSelected(profile.files[0])" #profile>
+                <label for="city">Select profile image</label>
+            </div>
+
+
+            <!-- submit btn -->
+            <button class="btn btn-success w-100" type="submit">SignUp</button>
+
+            <!-- link to signup component -->
+            <!-- <p class="text-center mt-4">Not registered yet...
+                <button class="btn btn-secondary" type="button" (click)="gotoSignup()">Signup</button> here
+            </p> -->
+        </form>
+    </div>
+</div>
+
+
+<!-- modal -->
+<ng-template #template>
+    <div class="modal-body text-success fw-bold text-center bg-light">
+        <p>Proceed to Login?</p>
+        <button type="button" class="btn btn-default" (click)="confirm()">Yes</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+    </div>
+</ng-template>
