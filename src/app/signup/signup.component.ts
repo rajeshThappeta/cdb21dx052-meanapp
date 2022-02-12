@@ -62,7 +62,7 @@ export class SignupComponent implements OnInit {
     this.file=file;
     this.fileName=file.name;
 
-    //read file content
+    //read file content to preview
     const reader=new FileReader()
     reader.readAsDataURL(file)
 
